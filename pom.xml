@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Jail</groupId>
+    <groupId>Refil</groupId>
     <artifactId>mysticpickaxe</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>f2p-prison-core</name>
+    <name>MysticPickaxe</name>
 
     <properties>
         <java.version>21</java.version>
