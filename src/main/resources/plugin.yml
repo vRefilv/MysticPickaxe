@@ -6,5 +6,6 @@ authors: [ Refil ]
 description: Mystic Pickaxe that mines 3x3xx
 commands:
   mysticpickaxe:
-    description: Gives mystic pickaxe that mines 3x3xx
-    usage: /mysticpickaxe
+    description: MysticPickaxe command with subcommands.
+    usage: /mysticpickaxe <subcommand>
+

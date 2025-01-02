@@ -61,31 +61,88 @@ public class MysticListener implements Listener {
 
                 String miningArea = config.getString("pickaxe.area", "3x3");
 
-                // Define mining range based on the config and block face
+                // Default mining range
                 int[] xRange = {-1, 1};
                 int[] yRange = {-1, 1};
                 int[] zRange = {-1, 1};
 
                 if (miningArea.equals("3x3")) {
-                    // Adjust ranges based on the dominant axis
+                    // Adjust ranges based on the dominant axis (BlockFace)
                     switch (face) {
-                        case WEST:
-                        case EAST:
+                        case WEST: // Positive X
                             xRange = new int[]{0, 0};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{-1, 1};
                             break;
-                        case DOWN:
-                        case UP:
+                        case EAST: // Negative X
+                            xRange = new int[]{0, 0};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{-1, 1};
+                            break;
+                        case DOWN: // Positive Y
+                            xRange = new int[]{-1, 1};
                             yRange = new int[]{0, 0};
+                            zRange = new int[]{-1, 1};
                             break;
-                        case NORTH:
-                        case SOUTH:
+                        case UP: // Negative Y
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{0, 0};
+                            zRange = new int[]{-1, 1};
+                            break;
+                        case NORTH: // Positive Z
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{0, 0};
+                            break;
+                        case SOUTH: // Negative Z
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{-1, 1};
                             zRange = new int[]{0, 0};
                             break;
                         default:
                             break;
                     }
+                } else if (miningArea.equals("3x3x3")) {
+                    // Adjust ranges based on the dominant axis (BlockFace)
+                    switch (face) {
+                        case WEST: // Positive X
+                            xRange = new int[]{0, 2};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{-1, 1};
+                            break;
+                        case EAST: // Negative X
+                            xRange = new int[]{-2, 0};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{-1, 1};
+                            break;
+                        case DOWN: // Positive Y
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{0, 2};
+                            zRange = new int[]{-1, 1};
+                            break;
+                        case UP: // Negative Y
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{-2, 0};
+                            zRange = new int[]{-1, 1};
+                            break;
+                        case NORTH: // Positive Z
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{0, 2};
+                            break;
+                        case SOUTH: // Negative Z
+                            xRange = new int[]{-1, 1};
+                            yRange = new int[]{-1, 1};
+                            zRange = new int[]{-2, 0};
+                            break;
+                        default:
+                            break;
+                    }
                 }
-
+                else {
+                    plugin.getLogger().warning("Invalid mining area specified in config. Defaulting to 3x3.");
+                    return;
+                }
                 // Mine blocks in the specified range
                 for (int x = xRange[0]; x <= xRange[1]; x++) {
                     for (int y = yRange[0]; y <= yRange[1]; y++) {

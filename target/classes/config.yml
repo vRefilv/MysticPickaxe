@@ -1,7 +1,0 @@
-pickaxe:
-  display_name: "&6Mystic Pickaxe"
-  lore:
-    - "&7A legendary pickaxe imbued with power."
-    - "&7Can mine faster than the wind."
-  type: DIAMOND_PICKAXE # Options: DIAMOND_PICKAXE, NETHERITE_PICKAXE
-  area: 3x3 # Options: 3x3, 3x3x3
